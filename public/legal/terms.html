@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imposter.ai Terms of Service</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #101010, #050505);
+      color: #f8fafc;
+    }
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      color: #93c5fd;
+    }
+    p, li {
+      margin: 0 0 16px;
+      color: #e2e8f0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #a5b4fc;
+    }
+    footer {
+      margin-top: 64px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <button
+        onclick="handleBackClick()"
+        style="
+          position: absolute;
+          left: 24px;
+          top: 24px;
+          border: 1px solid rgba(148, 163, 184, 0.3);
+          background: rgba(15, 23, 42, 0.7);
+          color: #e2e8f0;
+          padding: 10px 18px;
+          border-radius: 999px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          backdrop-filter: blur(6px);
+        "
+        aria-label="Go back"
+        type="button"
+      >
+        ← Back
+      </button>
+      <p>Effective date: October 25, 2025</p>
+      <h1>Imposter.ai Terms of Service</h1>
+      <p>These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the Imposter.ai mobile application, website, and related services (collectively, the &ldquo;Service&rdquo;) provided by Imposter.ai (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;).</p>
+    </header>
+
+    <div class="card">
+      <h2>1. Eligibility & Account</h2>
+      <p>You must be at least 13 years old to use the Service. By creating a profile, starting a lobby, or accessing any premium feature you represent that you meet this minimum age and are legally able to agree to these Terms. Anonymous play is available, but certain features (such as premium subscriptions, Supabase-backed storage, or AI-generated categories) may require a persistent account identifier.</p>
+
+      <h2>2. Acceptable Use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Reverse engineer, decompile, or attempt to access source code beyond what is provided in the open-source repository.</li>
+        <li>Use the Service for harassment, hate speech, explicit content, or any content that violates applicable laws.</li>
+        <li>Misrepresent your identity, attempt to gain unauthorized access to Supabase databases, or interfere with other players&rsquo; experience.</li>
+        <li>Scrape our word lists, AI prompts, or other proprietary data for commercial purposes.</li>
+      </ul>
+
+      <h2>3. Subscriptions & Payments</h2>
+      <p>Premium access is billed through Apple&rsquo;s in-app purchase system and managed through RevenueCat. By confirming a purchase you agree to Apple&rsquo;s payment terms. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription from the device Settings &gt; Apple ID &gt; Subscriptions. We do not issue prorated refunds for partially used periods.</p>
+
+      <h2>4. Content & Intellectual Property</h2>
+      <p>All artwork, animations, audio cues, and UI designs are owned by Imposter.ai and its licensors. You retain ownership of custom categories or prompts you enter, but you grant us a non-exclusive license to store and process that content for gameplay. Figma assets and branding may not be reused without permission.</p>
+
+      <h2>5. AI & Third-Party Services</h2>
+      <p>The Service uses third-party APIs (including OpenAI and Supabase Edge Functions) to generate hints, validate entitlements, and store progress. Your data may be processed by these providers strictly to deliver requested functionality. Each provider&rsquo;s terms apply in addition to these Terms.</p>
+
+      <h2>6. Termination</h2>
+      <p>We may suspend or terminate access if you violate these Terms, engage in fraudulent chargebacks, or compromise system security. You may stop using the Service at any time; deleting the app does not automatically cancel subscriptions.</p>
+
+      <h2>7. Disclaimers & Limitation of Liability</h2>
+      <p>The Service is provided &ldquo;as is&rdquo; without warranties of any kind. To the maximum extent permitted by law, Imposter.ai is not liable for indirect, incidental, or consequential damages arising from gameplay outcomes, data loss, or service interruptions.</p>
+
+      <h2>8. Changes to These Terms</h2>
+      <p>We may update these Terms to reflect product changes or legal requirements. Material updates will be announced in-app or via our website. Continued use after changes take effect constitutes acceptance.</p>
+
+      <h2>9. Contact</h2>
+      <p>Questions about these Terms can be sent to <a href="mailto:tomi@tappedinclub.com">tomi@tappedinclub.com</a>.</p>
+    </div>
+
+    <footer>
+      &copy; 2025 Imposter.ai. All rights reserved.
+    </footer>
+  </div>
+  <script>
+    function handleBackClick() {
+      if (document.referrer && document.referrer !== window.location.href) {
+        window.history.back();
+        return;
+      }
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      window.location.href = "/";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imposter.ai Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #050816, #03010a);
+      color: #f8fafc;
+    }
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      color: #7dd3fc;
+    }
+    p, li {
+      margin: 0 0 16px;
+      color: #e2e8f0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #a5b4fc;
+    }
+    footer {
+      margin-top: 64px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .card {
+      background: rgba(2, 6, 23, 0.85);
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 40px 120px rgba(2, 6, 23, 0.55);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <button
+        onclick="handleBackClick()"
+        style="
+          position: absolute;
+          left: 24px;
+          top: 24px;
+          border: 1px solid rgba(148, 163, 184, 0.3);
+          background: rgba(2, 6, 23, 0.85);
+          color: #e2e8f0;
+          padding: 10px 18px;
+          border-radius: 999px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          backdrop-filter: blur(6px);
+        "
+        aria-label="Go back"
+        type="button"
+      >
+        ← Back
+      </button>
+      <p>Effective date: October 25, 2025</p>
+      <h1>Imposter.ai Privacy Policy</h1>
+      <p>This Privacy Policy explains how Imposter.ai collects, uses, and safeguards information when you play the Imposter.ai party game on web, iOS, or any other supported platform.</p>
+    </header>
+
+    <div class="card">
+      <h2>1. Data We Collect</h2>
+      <ul>
+        <li><strong>Gameplay data:</strong> player names, avatar selections, lobby settings, category selections, and match history stored locally on your device.</li>
+        <li><strong>Subscription & entitlement data:</strong> RevenueCat app user ID, receipt identifiers, and entitlement status stored via Supabase Edge Functions for fraud prevention.</li>
+        <li><strong>Diagnostics:</strong> limited crash logs, performance metrics, and aggregate analytics to improve stability.</li>
+        <li><strong>Support requests:</strong> email, device model, and screenshots you voluntarily share with us.</li>
+      </ul>
+
+      <h2>2. How We Use Data</h2>
+      <ul>
+        <li>Operate core features such as lobby management, imposter assignment, and AI-generated hints.</li>
+        <li>Validate premium access and enforce paywall restrictions across devices.</li>
+        <li>Detect abuse, rate-limit API calls, and keep Supabase infrastructure secure.</li>
+        <li>Respond to support tickets and ship product improvements.</li>
+      </ul>
+
+      <h2>3. Third-Party Services</h2>
+      <p>We rely on several processors solely to deliver the Service:</p>
+      <ul>
+        <li><strong>Supabase:</strong> authentication, secure storage of entitlements, and Edge Functions.</li>
+        <li><strong>RevenueCat / Apple:</strong> subscription purchases, receipt validation, and billing.</li>
+        <li><strong>OpenAI:</strong> optional AI hint generation (words you submit may be processed to create a hint).</li>
+      </ul>
+
+      <h2>4. Data Retention</h2>
+      <p>Local game states remain on your device until you delete the app or clear browser storage. Subscription and entitlement records are retained while you maintain an account plus up to 12 months for fraud and compliance checks.</p>
+
+      <h2>5. Your Choices</h2>
+      <ul>
+        <li>You can delete local data by clearing the app cache or uninstalling the game.</li>
+        <li>You can disable AI hints; when disabled, no gameplay words are sent to OpenAI.</li>
+        <li>You may request deletion of backend data by emailing <a href="mailto:tomi@tappedinclub.com">tomi@tappedinclub.com</a>. We may retain certain records to comply with legal obligations.</li>
+      </ul>
+
+      <h2>6. Children&rsquo;s Privacy</h2>
+      <p>The Service is not directed to children under 13. If we learn a child under 13 has provided personal information, we will delete it immediately.</p>
+
+      <h2>7. Security</h2>
+      <p>We use Supabase row-level security, rate limiting, and server-side receipt validation to protect data. No security system is perfect, but we regularly review the stack described in <code>SECURITY_AUDIT_REPORT.md</code>.</p>
+
+      <h2>8. Changes</h2>
+      <p>We may update this Privacy Policy to reflect new features or regulatory requirements. Updates will be posted in-app and at this URL; the effective date will change accordingly.</p>
+
+      <h2>9. Contact</h2>
+      <p>Questions or data requests can be directed to <a href="mailto:tomi@tappedinclub.com">tomi@tappedinclub.com</a>.</p>
+    </div>
+
+    <footer>
+      &copy; 2025 Imposter.ai. All rights reserved.
+    </footer>
+  </div>
+  <script>
+    function handleBackClick() {
+      if (document.referrer && document.referrer !== window.location.href) {
+        window.history.back();
+        return;
+      }
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      window.location.href = "/";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- PWA Primary Meta Tags -->
+  <title>Imposter - Social Deduction Game</title>
+  <meta name="title" content="Imposter - Social Deduction Game">
+  <meta name="description" content="A thrilling social deduction game where players try to identify the imposter among them. Pass the phone, exchange clues, and find the imposter!">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#1A1A1A">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1A1A1A">
+  
+  <!-- App Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Apple Mobile Web App -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Imposter">
+  
+  <!-- Disable tap highlight on mobile -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Imposter - Social Deduction Game">
+  <meta property="og:description" content="A thrilling social deduction game where players try to identify the imposter among them.">
+  <meta property="og:image" content="/icon-512.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Imposter - Social Deduction Game">
+  <meta property="twitter:description" content="A thrilling social deduction game where players try to identify the imposter among them.">
+  <meta property="twitter:image" content="/icon-512.png">
+  
+  <!-- Preconnect to external resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts - Load here instead of CSS to prevent blocking -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Prevent zoom on input focus (iOS) -->
+  <style>
+    /* Critical CSS - prevent white flash on load */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #1A1A1A !important;
+      color: #FFFFFF;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    #root {
+      min-height: 100vh;
+      background-color: #1A1A1A !important;
+    }
+    
+    /* Loading spinner */
+    .app-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1A1A1A;
+      z-index: 9999;
+    }
+    
+    .app-loader-spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: #FFFFFF;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Hide loader when React loads */
+    #root:not(:empty) ~ .app-loader {
+      display: none;
+    }
+    
+    /* Ensure visibility */
+    #root > * {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    @media screen and (max-width: 767px) {
+      input, textarea, select {
+        font-size: 16px !important;
+      }
+    }
+  </style>
+  
+  <!-- Debug helper -->
+  <script>
+    // Check for script tags immediately
+    console.log('?? Checking for script tags...');
+    console.log('?? All script tags:', document.querySelectorAll('script').length);
+    
+    // Log when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('?? DOM Content Loaded');
+      console.log('?? Root element:', document.getElementById('root'));
+      console.log('?? Body background:', getComputedStyle(document.body).backgroundColor);
+      
+      // List all script tags
+      const scripts = document.querySelectorAll('script');
+      console.log('?? Total scripts found:', scripts.length);
+      scripts.forEach((script, i) => {
+        console.log(`?? Script ${i + 1}:`, {
+          src: script.src,
+          type: script.type,
+          async: script.async,
+          defer: script.defer
+        });
+      });
+      
+      // Watch for React mounting
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        console.log('?? Root HTML length:', root?.innerHTML?.length || 0);
+        console.log('?? Root children:', root?.children?.length || 0);
+        if (root?.children?.length > 0) {
+          console.log('?? First child:', root.children[0].tagName, root.children[0].className);
+        } else {
+          console.error('? React never mounted! Checking for errors...');
+          // Check if module loaded
+          console.log('?? Window.React:', typeof window.React);
+          console.log('?? Window errors:', window.__errors || 'none');
+        }
+      }, 3000);
+    });
+    
+    // Capture ALL JavaScript errors
+    window.__errors = [];
+    window.addEventListener('error', (event) => {
+      const errorInfo = {
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        error: event.error?.stack || event.error
+      };
+      console.error('? JavaScript Error:', errorInfo);
+      window.__errors.push(errorInfo);
+    });
+    
+    // Track module loading
+    window.addEventListener('unhandledrejection', (event) => {
+      console.error('? Promise Rejection:', event.reason);
+      window.__errors.push({ type: 'promise', reason: event.reason });
+    });
+  </script>
+</head>
+<body style="background-color: #1A1A1A; margin: 0; padding: 0;">
+  <div id="root" style="min-height: 100vh; background-color: #1A1A1A;"></div>
+  
+  <!-- Loading indicator while JavaScript loads -->
+  <div class="app-loader">
+    <div class="app-loader-spinner"></div>
+  </div>
+  <noscript>
+    <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; font-family: system-ui, -apple-system, sans-serif;">
+      <div>
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript in your browser to play Imposter.</p>
+      </div>
+    </div>
+  </noscript>
+  
+  <!-- Main application entry point -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+  
