@@ -1,38 +1,73 @@
+# Imposter.AI
 
-  # imposter.ai
+A social party game where players get secret roles, give clues, and vote to find the imposter.
 
-  This is a code bundle for imposter.ai. The original project is available at https://www.figma.com/design/gjljGIkAiU70VbfDnCRTVf/imposter.ai.
+I co-founded the app with friends and helped build its user flows, core game mechanics, AI features, and release process. The app has since reached **1M+ downloads**.
 
-  ## Running the code
+[Download on the App Store](https://apps.apple.com/us/app/imposter-ai-timer-party-game/id6754861642)
 
-  Run `npm i` to install the dependencies.
+This repository contains an early development snapshot. The current App Store release includes work beyond this snapshot.
 
-  Run `npm run dev` to start the development server.
+## Product and engineering
 
-  ## Environment variables
+- Player setup, category selection, private role reveals, timed rounds, and voting.
+- AI-generated word lists and hints through Supabase Edge Functions.
+- Supabase authentication and server-side RevenueCat entitlement checks for AI requests.
+- Input validation, request limits, and fallback handling around external API calls.
+- Community category data and likes backed by PostgreSQL.
 
-  Create a `.env` file in the project root (or update your existing one) and add:
+**Stack:** React, TypeScript, Vite, Tailwind CSS, Capacitor, Supabase, Hono, OpenAI, and RevenueCat.
 
-  ```
-  VITE_REVENUECAT_PUBLIC_KEY=appl_AotNmaBoxKXybLBYfEmgKNClfhS
-  ```
+## Code map
 
-  This key is required for the RevenueCat SDK to initialize on both web and native builds.
+| Area | Start here |
+| --- | --- |
+| App state and game flow | [src/App.tsx](src/App.tsx) |
+| Setup, roles, and voting | [src/components](src/components) |
+| Community category queries | [src/utils/supabase.ts](src/utils/supabase.ts) |
+| Database schema | [src/supabase-schema.sql](src/supabase-schema.sql) |
+| AI routes and request checks | [supabase/functions/server/index.tsx](supabase/functions/server/index.tsx) |
+| Subscription entitlement endpoint | [supabase/functions/entitlements/index.ts](supabase/functions/entitlements/index.ts) |
+| Historical launch tasks | [TASKS.md](TASKS.md) |
 
-  For Supabase Edge Functions, set the following secrets (via `supabase secrets set` or the dashboard):
+The AI implementation is in `server/index.tsx`. The adjacent `server/index.ts` is a demo handler, so verify the configured entrypoint before deploying a function from this snapshot.
 
-  ```
-  REVENUECAT_SECRET_KEY=rc_secret_your_key_here
-  ```
+## Run the web app
 
-  This key allows the `/functions/v1/entitlements` endpoint to call the RevenueCat REST API securely.
+Use the package manifest and build configuration at the repository root.
 
-  ## Legal
+```bash
+npm install
+npm run dev
+```
 
-  The production Terms of Service and Privacy Policy now live under the Vite public directory and are bundled with every build:
+To build and preview the web bundle:
 
-  - Terms of Service: `/legal/terms.html`
-  - Privacy Policy: `/legal/privacy.html`
+```bash
+npm run build
+npm run preview
+```
 
-  These URLs are accessible on the web build (`https://<your-domain>/legal/...`) and inside the Capacitor shell via the paywall modal links. Each hosted page now includes its own back button that returns users to the previous screen (or the app root if no history is available).
-  
+## Service configuration
+
+Create a local `.env` file for the RevenueCat public SDK key:
+
+```dotenv
+VITE_REVENUECAT_PUBLIC_KEY=your_revenuecat_public_sdk_key
+```
+
+The Supabase client reads its project ID and public anonymous key from `src/utils/supabase/info`. Configure these for your own development project.
+
+The Edge Functions use `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `REVENUECAT_SECRET_KEY`, and `OPENAI_API_KEY` in their server environment. Keep service-role and provider secrets out of the client bundle. Review the schema, KV storage setup, and authentication policies before connecting a new backend.
+
+## iOS
+
+The app uses Capacitor. Native development requires macOS and Xcode. This snapshot does not include the generated iOS project.
+
+After configuring your own app identity and creating the native project with `npx cap add ios`, `npm run ios` builds the web bundle, syncs it, and opens Xcode. `npm run sync` rebuilds and syncs native assets.
+
+## Design and legal
+
+The original design is available in [Figma](https://www.figma.com/design/gjljGIkAiU70VbfDnCRTVf/imposter.ai).
+
+The bundled legal pages are [Terms of Service](public/legal/terms.html) and [Privacy Policy](public/legal/privacy.html). The web build serves them at `/legal/terms.html` and `/legal/privacy.html`.
