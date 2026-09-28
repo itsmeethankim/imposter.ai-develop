@@ -64,6 +64,9 @@ This document tracks the remaining work required to launch the Imposter iOS app.
   - Audit text contrast, focus states, and voice-over labels, especially inside modal flows.
 
 ## Completed Tasks
+- **Refresh public project documentation** (September 28, 2026)
+  - Added product context, code navigation, backend architecture, and setup instructions.
+  - Clarified that this repository is an early development snapshot and distinguished the AI implementation from the demo function entrypoint.
 - **Consolidate build tooling (package/vite configuration)** (October 23, 2025)
   - Merged all tooling into root directory
   - Removed versioned imports in components
